@@ -37,26 +37,27 @@ export default class DetailsService {
 
             if (data) {
 
-            
-
             this._elDetails.innerHTML = '';
                     
             let elCloneTemplate = this._elTemplateDetails.cloneNode(true); // Clonage du template
             
-            if (data.description) {
+            data.description = data.description || 'Aucune description disponible.';
+            // if (data.description) {
             // Remplacement des placeholders dans le template
             for (const cle in data) {
                 let regex = new RegExp('{{' + cle + '}}', 'g');
                 elCloneTemplate.innerHTML = elCloneTemplate.innerHTML.replace(regex, data[cle]);
             }
 
+
+    
             // Importation des détails dans le DOM
             let elNewDetails = document.importNode(elCloneTemplate.content, true);
             this._elDetails.append(elNewDetails); 
-                } else {
-                 //afficher une message 
-                 this._elDetails.innerHTML = 'Aucune description disponible.';
-                } 
+                // } else {
+                 
+                //  this._elDetails.innerHTML = 'Aucune description disponible.';
+                // } 
 
             } else {
 

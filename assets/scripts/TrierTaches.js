@@ -5,6 +5,9 @@ export default class TrierTaches {
     
         this._elNewTask = document.querySelector('[data-js-newtask]');
         this._elsButtonsTri = document.querySelectorAll('[data-js-trier]');
+        // this._elTaches = document.querySelector('[data-js-taches]');
+        // this._elTemplateTache = document.querySelector('[data-template-tache]');
+   
         this.init();
     }
 
@@ -63,9 +66,11 @@ export default class TrierTaches {
         })
         .then(function(data) {
 
-            this._elNewTask.innerHTML = '';
+            this._elNewTask.innerHTML = ''; 
 
             for (let i = 0; i < data.length; i++) {
+            
+
                 this._elNewTask.innerHTML += `<div class="tache" data-js-taches="${data[i][0]}">
                 <p>
                       <span>
@@ -87,7 +92,22 @@ export default class TrierTaches {
                 for (let i = 0; i < elsTaches.length; i++) {
                     
                     new Tache(elsTaches[i]);
-                }
+
+
+                /**je n'ai pas réussi a faire fonctionner le tri dans le template */
+                // let elCloneTemplate = this._elTemplateTache.cloneNode(true); // Clonage du template
+    
+                // // Remplacement des placeholders dans le template
+                // for (const cle in data[i]) {
+                //     let regex = new RegExp('{{' + cle + '}}', 'g');
+                //     elCloneTemplate.innerHTML = elCloneTemplate.innerHTML.replace(regex, data[i][cle]);
+                // }
+    
+                // // Importation de la nouvelle tâche dans le DOM
+                // let elNewTask = document.importNode(elCloneTemplate.content, true);
+                // this._elNewTask.append(elNewTask); 
+               
+                 }
 
 
             

@@ -63,7 +63,7 @@
 
 			while ($tache = mysqli_fetch_assoc($taches)) {
 
-				echo '<div class="tache" data-js-taches="' . $tache['id'] . '">
+				echo '<div data-js-taches="' . $tache['id'] . '">
                       <p>
                             <span>
                                 <small>Tâche : </small> ' . $tache['tache'] . ' 
@@ -87,7 +87,7 @@
             </div>
         </section>
 
-        <!-- template -->
+        <!-- template ajout d'une tâche -->
         <template data-template-tache>
             <div data-js-taches="{{id}}">                
                 <span>
@@ -103,7 +103,7 @@
             </div>
 		</template>
 
-        <!-- template -->
+        <!-- template afficher les détails -->
         <template data-js-template-details>
             <div data-js-tache="{{id}}">                 
                 <span>
