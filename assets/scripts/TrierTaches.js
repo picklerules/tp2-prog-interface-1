@@ -17,7 +17,7 @@ export default class TrierTaches {
         for (let i = 0; i < this._elsButtonsTri.length; i++) {
             
             this._elsButtonsTri[i].addEventListener('click', function(e) {
-            // console.log(this._elsButtonsTri[i].dataset.jsTrier);
+
             let tri = this._elsButtonsTri[i].dataset.jsTrier;
 
             if (tri == 'tache') {
@@ -36,8 +36,6 @@ export default class TrierTaches {
     }
 
     triage(btn) {
-
-        // console.log(btn);
         
         let tache = {
             action: btn
@@ -46,27 +44,26 @@ export default class TrierTaches {
 
         // Options pour la requête fetch
         let oOptions = {
-            method: 'POST', // Méthode POST
+            method: 'POST', 
             headers: {
-                'Content-type': 'application/json' // Type de contenu
+                'Content-type': 'application/json' 
             },
-            body: JSON.stringify(tache) // Corps de la requête avec les données en format JSON
+            body: JSON.stringify(tache) 
         };
 
         // Requête fetch pour obtenir les taches
         fetch('requetes/requetesAsync.php', oOptions)
         .then(function (reponse) {
-            // console.log(reponse.ok);
+
             // Traitement de la réponse
     
-            if(reponse.ok) return reponse.json(); // Si OK, convertir en JSON
+            if(reponse.ok) return reponse.json(); 
 
-            else throw new Error('La réponse n\'est pas ok'); // Sinon, lancer une erreur
+            else throw new Error('La réponse n\'est pas ok'); 
         })
         .then(function(data) {
 
             this._elNewTask.innerHTML = '';
-            console.log(data);
 
             for (let i = 0; i < data.length; i++) {
                 this._elNewTask.innerHTML += `<div class="tache" data-js-taches="${data[i][0]}">

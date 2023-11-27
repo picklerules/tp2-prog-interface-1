@@ -89,7 +89,7 @@
 
         <!-- template -->
         <template data-template-tache>
-            <div data-js-tache="{{id}}">                
+            <div data-js-taches="{{id}}">                
                 <span>
                     <small>Tâche : {{tache}}</small>  
                 </span> 
@@ -104,16 +104,18 @@
 		</template>
 
         <!-- template -->
-        <template data-js-template-details>              
+        <template data-js-template-details>
+            <div data-js-tache="{{id}}">                 
                 <span>
                     <small>Tâche : {{tache}}</small>  
                 </span> 
                 <span>
-                    <small>Tâche : {{description}}</small>  
+                    <small>Description : {{description}}</small>  
                 </span> 
                 <span>
                     <small>Importance : {{importance}}</small> 
                 </span>
+            </div>
         </template>
 
 

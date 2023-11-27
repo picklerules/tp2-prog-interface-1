@@ -73,18 +73,23 @@
         executeRequete("DELETE FROM taches WHERE id = $id");
     }
 
+	/**
+     * Trier les tâches par ordre alphabétique
+     */
 	function trierAlpha() {
 		
         return executeRequete('SELECT * FROM taches ORDER BY tache ASC');
 	}
 
-
+	/**
+     * Trier les tâches par importance
+     */
 	function trierImportance() {
 
         return executeRequete('SELECT * FROM taches ORDER BY importance ASC');
     }
 
-	     /**
+	/**
      * Récupérer les détails de la tâche
      */
     function getDetails($id) {

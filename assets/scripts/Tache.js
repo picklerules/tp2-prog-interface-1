@@ -2,17 +2,25 @@ import Formulaire from './Formulaire.js';
 import { afficheDetail } from './DetailsService.js'
 
 export default class Tache {
+    #_el;
+    #_index;
+    #_elActions;
+    #_elTaches;
+    #_elTacheDetail;
+    #_id;
+    #_elCible;
+
     constructor(el) {
 
-        this._el = el;
-        this._index = this._el.dataset.jsTache;
-        this._elActions = this._el.querySelector('[data-js-actions]');
+        this.#_el = el;
+        this.#_index = this.#_el.dataset.jsTache;
+        this.#_elActions = this.#_el.querySelector('[data-js-actions]');
         
-        this._elTaches = this._el.closest('[data-js-taches]');
-        this._elTacheDetail = document.querySelector('[data-js-tache-detail]');
+        this.#_elTaches = this.#_el.closest('[data-js-taches]');
+        this.#_elTacheDetail = document.querySelector('[data-js-tache-detail]');
         
-        this._id = this._el.dataset.jsTaches; 
-        this._elCible = document.querySelector('#cible');
+        this.#_id = this.#_el.dataset.jsTaches; 
+        this.#_elCible = document.querySelector('#cible');
 
         this.init();
     }
@@ -22,12 +30,12 @@ export default class Tache {
      * Initialise les comportements
      */
     init() {
-        this._elActions.addEventListener('click', function(e) {
+        this.#_elActions.addEventListener('click', function(e) {
             if (e.target.dataset.jsAction == 'afficher') this.afficheDetail();
             else if (e.target.dataset.jsAction == 'supprimer') this.supprimeTache();
 
             window.scrollTo({
-                top: this._elCible.getBoundingClientRect().top - 50,
+                top: this.#_elCible.getBoundingClientRect().top - 50,
                 behavior: 'smooth'
             });
         }.bind(this));
@@ -39,15 +47,8 @@ export default class Tache {
      */
     afficheDetail() {
         
-        location = `#!/taches/${this._id}`;
+        location = `#!/taches/${this.#_id}`;
 
-        // let elDetailDom =  `<div class="detail__info">
-        //                         <p><small>Tâche : </small>${aTaches[this._index].tache}</p>
-        //                         <p><small>Description : </small>${description ? description : 'Aucune description disponible.'}</p>
-        //                         <p><small>Importance : </small>${aTaches[this._index].importance}</p>
-        //                     </div>`;
-
-        // this._elTacheDetail.innerHTML = elDetailDom;
     }
 
 
@@ -56,11 +57,9 @@ export default class Tache {
      */
     supprimeTache() {
 
-        //comme exercice 3, requete fetch 
-
         let tache = {
             action: 'deleteTask',
-            id: this._id 
+            id: this.#_id 
         };
 
         let oOptions = {
@@ -82,7 +81,7 @@ export default class Tache {
         .then(function(id) {
 
             // console.log(id);
-            this._el.remove(); 
+            this.#_el.remove(); 
             
          }.bind(this))
 

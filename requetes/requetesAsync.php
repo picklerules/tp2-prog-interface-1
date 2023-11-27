@@ -49,10 +49,10 @@ if (isset($data['action'])) {
         case 'getDetails':
             if (isset($data['id'])) {
 
-               $id = htmlspecialchars($data['id']);
-               $data = mysqli_fetch_assoc(getDetails($id));
+               $tache = mysqli_fetch_assoc(getDetails($data['id']));
                header('Content-type: application/json; charset=utf-8');
-               echo json_encode($data);
+               echo json_encode($tache);
+               
             } else {
                 echo 'Erreur';
             }

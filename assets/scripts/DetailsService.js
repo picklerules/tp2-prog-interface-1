@@ -6,8 +6,7 @@ export default class DetailsService {
         this._elTemplateDetails = document.querySelector('[data-js-template-details]');
         this.afficheDetail = this.afficheDetail.bind(this);
 
-        console.log(this._elTemplateDetails);
-
+        this._path = location.pathname;
         }
 
 
@@ -29,21 +28,22 @@ export default class DetailsService {
 
         fetch('requetes/requetesAsync.php', oOptions)
         .then(function (reponse) {
-            // console.log(reponse.ok);
+
             // Traitement de la réponse
             if(reponse.ok) return reponse.json(); // Si OK, convertir en JSON
         
         })
         .then(function(data) {
 
-            tache.tache = data.tache;
-            tache.description = data.description;
-            tache.importance = data.importance;
+            if (data) {
+
+            
 
             this._elDetails.innerHTML = '';
                     
             let elCloneTemplate = this._elTemplateDetails.cloneNode(true); // Clonage du template
-
+            
+            if (data.description) {
             // Remplacement des placeholders dans le template
             for (const cle in data) {
                 let regex = new RegExp('{{' + cle + '}}', 'g');
@@ -53,9 +53,17 @@ export default class DetailsService {
             // Importation des détails dans le DOM
             let elNewDetails = document.importNode(elCloneTemplate.content, true);
             this._elDetails.append(elNewDetails); 
-            // new DetailsService(this._elDetails.lastElementChild);
+                } else {
+                 //afficher une message 
+                 this._elDetails.innerHTML = 'Aucune description disponible.';
+                } 
 
-            history.pushState(null, null, this._path);
+            } else {
+
+                this._elDetails.innerHTML = '';
+                history.pushState(null, null, this._path);
+            }
+
         
     }.bind(this))
     .catch(function(err) {

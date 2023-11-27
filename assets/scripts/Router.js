@@ -2,17 +2,17 @@ import { afficheDetail } from './DetailsService.js'
 
 export default class Router {
     #_routes;
+    #_elTemplateDetails;
     constructor() {
 
 
-        this._elTemplateDetails = document.querySelector('[data-js-template-details]')
+        this.#_elTemplateDetails = document.querySelector('[data-js-template-details]')
 
 
         this.#_routes = [
             ['/taches/:id', afficheDetail]
         ];
 
-        this._path = location.pathname;
 
 
         this.init();
@@ -25,7 +25,6 @@ export default class Router {
    
         window.addEventListener('hashchange', function() {
             let id = this.#gereHashbang();
-            // console.log(id);
 
         }.bind(this));
     }
@@ -66,41 +65,4 @@ export default class Router {
     }
 
 
-
-//     afficheDetail(id) {
-      
-//         let tache = {
-//             action: 'getDetails',
-//             id: id
-//         }
-
-//         let oOptions = {
-//             method : "POST", 
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(tache)
-//         }
-
-//         fetch('requetes/requetesAsync.php', oOptions)
-//         .then(function (reponse) {
-//             // console.log(reponse.ok);
-//             // Traitement de la réponse
-//             if(reponse.ok) return reponse.json(); // Si OK, convertir en JSON
-        
-//         })
-//         .then(function(data) {
-
-      
-
-            
-
-            
-
-//     })
-// };
-
-    // #gereActif(id = null) {
-    //     // Logique pour gérer l'état actif (à ajouter si nécessaire)
-    // }
 }
