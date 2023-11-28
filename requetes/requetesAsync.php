@@ -34,14 +34,26 @@ if (isset($data['action'])) {
 
         case 'trierAlpha':
             $tasks = trierAlpha();
-            $data = mysqli_fetch_all($tasks);
+
+            $data = [];
+
+            while ($task = mysqli_fetch_assoc($tasks)) {
+                $data[] = $task;
+            }
+            
 
             echo json_encode($data);
             break;
 
         case 'trierImportance':
             $tasks = trierImportance();
-            $data = mysqli_fetch_all($tasks);
+
+            $data = [];
+
+            while ($task = mysqli_fetch_assoc($tasks)) {
+                $data[] = $task;
+            }
+            
             
             echo json_encode($data);
             break;

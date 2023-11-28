@@ -49,15 +49,10 @@ export default class DetailsService {
                 elCloneTemplate.innerHTML = elCloneTemplate.innerHTML.replace(regex, data[cle]);
             }
 
-
     
             // Importation des détails dans le DOM
             let elNewDetails = document.importNode(elCloneTemplate.content, true);
             this._elDetails.append(elNewDetails); 
-                // } else {
-                 
-                //  this._elDetails.innerHTML = 'Aucune description disponible.';
-                // } 
 
             } else {
 

@@ -2,7 +2,7 @@ import Formulaire from './Formulaire.js';
 import Tache from './Tache.js';
 import TrierTaches from './TrierTaches.js';
 import Router from './Router.js';
-
+import Detail from './Detail.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         new Tache(elsTaches[i]);
     }
-
-        new TrierTaches();
-
-        new Router;
     
+
+
+    new TrierTaches();
+
+    new Router;
+
 
 });
