@@ -10,6 +10,9 @@ export default class DetailsService {
         }
 
 
+    /**
+     * Affiche les détails de la tâche 
+     */    
     afficheDetail(id) {
 
 
@@ -39,10 +42,10 @@ export default class DetailsService {
 
             this._elDetails.innerHTML = '';
                     
-            let elCloneTemplate = this._elTemplateDetails.cloneNode(true); // Clonage du template
+            let elCloneTemplate = this._elTemplateDetails.cloneNode(true); 
             
             data.description = data.description || 'Aucune description disponible.';
-            // if (data.description) {
+          
             // Remplacement des placeholders dans le template
             for (const cle in data) {
                 let regex = new RegExp('{{' + cle + '}}', 'g');
@@ -63,7 +66,7 @@ export default class DetailsService {
         
     }.bind(this))
     .catch(function(err) {
-        // Gestion des erreurs
+        
         console.log(err.message);
    
 

@@ -120,7 +120,7 @@
 
 
         <!-- Section détail d'une tâche -->
-        <section class="detail detail--ouvert" data-js-detail id="cible">
+        <section class="detail detail--ouvert" data-js-detail>
             <h3>Détail d'une tâche</h3>
 
             <div class="chevron chevron--top" data-js-chevron></div>

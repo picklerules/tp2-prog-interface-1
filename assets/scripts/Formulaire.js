@@ -36,7 +36,7 @@ export default class Formulaire {
 
     
     /**
-     * Ajoute la tâche 
+     * Ajoute la tâche de façon asynchrone
      */
     ajouteTache() {
 

@@ -2,7 +2,6 @@ export default class ValideFormulaire {
     
     constructor(el) {
         this._el = el;
-        // console.log(this._el);
         this._elInputTache = this._el.tache;
         this._elInputDescription = this._el.description;
         this._elsInputImportance = this._el.querySelectorAll('input[name="importance"]');

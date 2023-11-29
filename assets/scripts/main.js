@@ -6,6 +6,8 @@ import Detail from './Detail.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    let elSectionDetail = document.querySelector('[data-js-detail]');
+
     let elFormulaire = document.querySelector('[data-js-formulaire]');
     if (elFormulaire) {
 
@@ -18,11 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         new Tache(elsTaches[i]);
     }
     
-
+  
 
     new TrierTaches();
 
     new Router;
+
+    new Detail(elSectionDetail);
 
 
 });
